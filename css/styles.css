@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+    margin: 0;
+}
+
+#info {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(207, 205, 205);
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 15px;
+}
+
+#boton-jugar {
+    height: 50px;
+    width: 100px;
+    background-color: white;
+}
+
+.cuadro {
+    height: 100px;
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+.cuadro-1 {
+    background-color: green;
+    border-top-left-radius: 100%;
+}
+
+.cuadro-2 {
+    background-color: red;
+    border-top-right-radius: 100%;
+}
+
+.cuadro-3 {
+    background-color: yellow;
+    border-bottom-left-radius: 100%;
+}
+
+.cuadro-4 {
+    background-color: blue;
+    border-bottom-right-radius: 100%;
+}
