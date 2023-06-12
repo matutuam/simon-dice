@@ -7,6 +7,7 @@ const $botonJugar = document.querySelector('#boton-jugar');
 $botonJugar.onclick = comenzarJuego;
 
 function comenzarJuego() {
+    deshabilitarInputUsuario();
     reiniciarTurno();
     reiniciarPuntos();
     manejarJuego();
@@ -14,12 +15,36 @@ function comenzarJuego() {
 
 function manejarJuego() {
     turnoMaquina();
+    habilitarInputUsuario();
 }
 
 function turnoMaquina() {
     const cuadroMaquina = elegirCuadroAleatorio();
     patronMaquina.push(cuadroMaquina);
     resaltarCuadro(cuadroMaquina);
+}
+
+function habilitarInputUsuario() {
+    const $cuadros = document.querySelectorAll('.cuadro');
+
+    $cuadros.forEach(function($cuadro) {
+        $cuadro.addEventListener('click', manejarInputUsuario);
+    });
+}
+
+function deshabilitarInputUsuario() {
+    const $cuadros = document.querySelectorAll('.cuadro');
+
+    $cuadros.forEach(function($cuadro) {
+        $cuadro.removeEventListener('click', manejarInputUsuario);
+    });
+}
+
+function manejarInputUsuario(event) {
+    const cuadroElegido = event.target;
+    patronUsuario.push(cuadroElegido);
+    resaltarCuadro(cuadroElegido);
+    deshabilitarInputUsuario();
 }
 
 function elegirCuadroAleatorio() {
