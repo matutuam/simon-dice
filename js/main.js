@@ -1,6 +1,7 @@
 let puntos = 0;
 let patronMaquina = [];
 let patronUsuario = [];
+let RETRASO_MS = 500;
 
 const $botonJugar = document.querySelector('#boton-jugar');
 
@@ -21,7 +22,18 @@ function manejarJuego() {
 function turnoMaquina() {
     const cuadroMaquina = elegirCuadroAleatorio();
     patronMaquina.push(cuadroMaquina);
-    resaltarCuadro(cuadroMaquina);
+
+    for (let i = 0; i < patronMaquina.length; i++) {
+        const cuadro = patronMaquina[i];
+        console.log(patronMaquina);
+        console.log(cuadro);
+
+        setTimeout(() => {
+            resaltarCuadro(cuadro);
+        }, RETRASO_MS);
+
+        RETRASO_MS = RETRASO_MS + 500;
+    }
 }
 
 function habilitarInputUsuario() {
@@ -45,6 +57,12 @@ function manejarInputUsuario(event) {
     patronUsuario.push(cuadroElegido);
     resaltarCuadro(cuadroElegido);
     deshabilitarInputUsuario();
+
+    for (let i = 0; i < patronUsuario.length; i++) {
+        if (patronUsuario[i] === patronMaquina[i]) {
+            manejarJuego();
+        }
+    }
 }
 
 function elegirCuadroAleatorio() {
